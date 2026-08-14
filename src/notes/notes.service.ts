@@ -1,7 +1,7 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
-import { Note } from './notes.entity';
+import {Injectable, NotFoundException} from "@nestjs/common";
+import {InjectRepository} from "@nestjs/typeorm";
+import {Repository} from "typeorm";
+import {Note} from "./notes.entity";
 
 @Injectable()
 export class NotesService {
@@ -10,12 +10,12 @@ export class NotesService {
     private noteRepository: Repository<Note>,
   ) {}
 
-  async findAll(): Promise<Note[]> {
+  async findAll (): Promise<Note[]> {
     return this.noteRepository.find();
   }
 
-  async create(text: string, metadata?: Record<string, any>): Promise<Note> {
-    const note = this.noteRepository.create({ text, metadata });
+  async create (text: string): Promise<Note> {
+    const note = this.noteRepository.create({ text });
     return this.noteRepository.save(note);
   }
 

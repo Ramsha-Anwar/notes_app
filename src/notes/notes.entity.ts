@@ -1,4 +1,4 @@
-import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn } from 'typeorm';
+import { Column, Entity, PrimaryGeneratedColumn , CreateDateColumn } from "typeorm";
 
 @Entity()
 export class Note {
@@ -7,9 +7,6 @@ export class Note {
 
   @Column()
   text: string;
-
-  @Column({ type: 'jsonb', nullable: true })
-  metadata: Record<string, any>;
 
   @CreateDateColumn()
   createdAt: Date;
